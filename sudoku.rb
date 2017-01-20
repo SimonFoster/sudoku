@@ -139,9 +139,9 @@ module SudokuSolver
   end
   
   def self.to_s bd
-    bd.map { |c| c.to_s }.join
+    bd.map { |c| c[0].to_s }.join
   end
-
+[0]
   def self.solve bd
     return bd if complete? bd
     next_boards( bd ) do |b|
@@ -223,7 +223,7 @@ module SudokuSolver
 end
 
 ARGF.each_line do |line|
-  p line
+  p line.chomp
   p SudokuSolver.to_s SudokuSolver.solve SudokuSolver.from_s line.chomp
 end
 
